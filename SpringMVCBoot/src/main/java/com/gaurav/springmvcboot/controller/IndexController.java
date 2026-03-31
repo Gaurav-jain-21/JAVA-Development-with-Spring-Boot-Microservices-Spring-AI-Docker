@@ -1,13 +1,11 @@
 package com.gaurav.springmvcboot.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
@@ -30,6 +28,15 @@ public class IndexController {
         model.addAttribute("result",num3);
 //        mv.addObject("result",num3);
         return "result";
+    }
+    @GetMapping("/alien")
+    public String alien(){
+        return "aliean";
+    }
+
+    @GetMapping("/alieanAdd")
+    public String addAliean(@RequestParam("aid") int aid, @RequestParam("aname") String name){
+        return "aliean";
     }
 
 }
