@@ -15,4 +15,8 @@ public class AlienModel {
     public void setAname(String aname){
         this.aname= aname;
     }
+    @Override
+    public String toString(){
+        return "Alean [aid="+ aid+",aname="+aname+"]";
+    }
 }

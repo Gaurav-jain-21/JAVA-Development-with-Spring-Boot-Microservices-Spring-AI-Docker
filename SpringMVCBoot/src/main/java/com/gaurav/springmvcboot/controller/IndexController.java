@@ -1,5 +1,6 @@
 package com.gaurav.springmvcboot.controller;
 
+import com.gaurav.springmvcboot.model.AlienModel;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +36,12 @@ public class IndexController {
     }
 
     @GetMapping("/alieanAdd")
-    public String addAliean(@RequestParam("aid") int aid, @RequestParam("aname") String name){
-        return "aliean";
+    public String addAliean(@RequestParam("aid") int aid, @RequestParam("aname") String name, Model model){
+        AlienModel a = new AlienModel();
+        a.setAid(aid);
+        a.setAname(name);
+        model.addAttribute("aliean",a);
+        return "result";
     }
 
 }
