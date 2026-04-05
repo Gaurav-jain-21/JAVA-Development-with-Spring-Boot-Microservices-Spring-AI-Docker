@@ -23,5 +23,10 @@ public class QuestionController {
         return questionService.getQuestionBYCategory(category);
     }
 
+    @PostMapping("/add")
+    public String addQuestion(@RequestBody Question question){
+        questionService.addQuestion(question);
+        return "question added sucs";
+    }
 
 }
