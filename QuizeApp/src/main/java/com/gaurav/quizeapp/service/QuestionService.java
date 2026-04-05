@@ -3,6 +3,8 @@ package com.gaurav.quizeapp.service;
 import com.gaurav.quizeapp.model.Question;
 import com.gaurav.quizeapp.repo.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class QuestionService {
         return questionRepo.findAll();
     }
 
-    public List<Question> getQuestionBYCategory(String category) {
-        return questionRepo.findByCategory(category);
+    public ResponseEntity<List<Question>> getQuestionBYCategory(String category) {
+        return new ResponseEntity<>(questionRepo.findByCategory(category), HttpStatus.OK);
     }
 
     public void addQuestion(Question question) {
