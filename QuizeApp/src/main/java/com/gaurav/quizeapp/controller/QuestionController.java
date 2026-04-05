@@ -3,9 +3,7 @@ package com.gaurav.quizeapp.controller;
 import com.gaurav.quizeapp.model.Question;
 import com.gaurav.quizeapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,10 @@ public class QuestionController {
     public List<Question> getAllQuestion(){
         return questionService.getAllQuestions();
 
+    }
+    @GetMapping("/{category}")
+    public List<Question> getQuestionByCategory(@PathVariable String category){
+        return questionService.getQuestionBYCategory(category);
     }
 
 
