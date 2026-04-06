@@ -1,5 +1,6 @@
 package com.gaurav.patientservice.service;
 
+import com.gaurav.patientservice.dtoo.PatientRequestDTO;
 import com.gaurav.patientservice.dtoo.PatientResponseDTO;
 import com.gaurav.patientservice.mapper.PatientMapper;
 import com.gaurav.patientservice.model.Patient;
@@ -21,5 +22,12 @@ public class PatientService {
         List<Patient> patients= patientRepository.findAll();
         List<PatientResponseDTO> patientResponseDTOs= patients.stream().map(PatientMapper::toDTO).toList();
         return patientResponseDTOs;
+    }
+
+    public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO){
+
+        Patient newPatient= patientRepository.save(PatientMapper.toModel(patientRequestDTO));
+        return PatientMapper.toDTO(newPatient);
+
     }
 }
